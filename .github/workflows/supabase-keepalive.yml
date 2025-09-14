@@ -1,0 +1,16 @@
+name: supabase-keepalive
+on:
+schedule:
+- cron: '0 1 */2 * *' # jalan tiap 3 hari jam 01:00 UTC (≈09:00 WITA)
+workflow_dispatch: {}
+jobs:
+ping:
+runs-on: ubuntu-latest
+steps:
+- name: Ping Supabase RPC
+run: |
+curl -sS -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/rpc/ping_db"
+-H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}"
+-H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}"
+-H "Content-Type: application/json"
+-d '{}' || exit 1
