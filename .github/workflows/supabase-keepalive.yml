@@ -1,7 +1,7 @@
 name: supabase-keepalive
 on:
 schedule:
-- cron: '0 1 */2 * *' # jalan tiap 3 hari jam 01:00 UTC (≈09:00 WITA)
+- cron: '0 1 */3 * *' # jalan tiap 3 hari jam 01:00 UTC (≈09:00 WITA)
 workflow_dispatch: {}
 jobs:
 ping:
